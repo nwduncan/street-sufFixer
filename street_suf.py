@@ -3,14 +3,17 @@
 ## Converts the abbreviated suffix in a string to the full name.
 ## e.g. 'Example Ln' = 'Example Lane'
 ## Returns False if no match found.
-## Append entries to the dictionary to suit your needs.
+## Append entries to the dictionary to suit.
 ## import street_suf and run with street_suf.Fixer("input string")
 
 def Fixer(testString):
+    # Converts string to lower case and removes
+    # leading and trailing whitespace.
     testString = testString.strip()
     testString = testString.lower()
     # Abbreviation key dictionary. Edit as required.
     keyDict = { 'av': 'avenue',
+                'ave': 'avenue',
                 'rd': 'road',
                 'ct': 'court',
                 'crt': 'court',
@@ -80,8 +83,10 @@ def Fixer(testString):
         # If a match is found return the fixed string
         if keyTest == inpTest:
             newName = testString[:lenTest] + " " + keyDict[key]
-            return newName.title()
-        # If no matc is found return False
+            # Returns a lower case string
+            # Convert to proper format with .title() if necessary
+            return newName
+        # If no match is found return False
         else:
             if attempt_items == len(keyDict):
                 return False
